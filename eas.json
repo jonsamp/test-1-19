@@ -8,9 +8,24 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "channel": "preview",
+      "env": {
+        "API_URL": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "ios": {
+        "simulator": "true"
+      }
     },
-    "production": {}
+    "production": {
+      "channel": "production",
+      "env": {
+        "API_URL": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+      },
+      "ios": {
+        "simulator": "true"
+      }
+    }
   },
   "submit": {
     "production": {}

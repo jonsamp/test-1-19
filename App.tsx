@@ -1,20 +1,55 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text } from 'react-native';
+import * as Updates from 'expo-updates';
+import Constants from 'expo-constants';
+
+// Constants.manifest2.extra.expoClient.extra.eas.API_URL
+// but what will it be in a non expoClient context?
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <StatusBar style='auto' />
+      <Text style={styles.text}>Build #2</Text>
+      <Text style={styles.text}>
+        Updates API_URL:{' '}
+        {Updates.manifest?.extra?.expoClient?.extra?.eas?.API_URL}
+      </Text>
+      <Text style={styles.text}>---</Text>
+      <Text style={styles.text}>
+        Constants API_URL:{' '}
+        {Constants.manifest2?.extra?.expoClient?.extra?.eas?.API_URL}
+      </Text>
+      <Text style={styles.text}>---</Text>
+      <Text style={styles.text}>API_URL: {process.env.API_URL}</Text>
+      <Text style={styles.text}>---</Text>
+      <Text style={styles.text}>
+        Updates: {JSON.stringify(Updates, null, 2)}
+      </Text>
+      <Text style={styles.text}>---</Text>
+      <Text style={styles.text}>
+        Updates keys: {JSON.stringify(Object.keys(Updates))}
+      </Text>
+      <Text style={styles.text}>---</Text>
+      <Text style={styles.text}>
+        Constants.manifest: {JSON.stringify(Constants.manifest, null, 2)}
+      </Text>
+      <Text style={styles.text}>---</Text>
+      <Text style={styles.text}>
+        Constants.manifest2: {JSON.stringify(Constants.manifest2, null, 2)}
+      </Text>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 100,
+    backgroundColor: '#000',
+  },
+  text: {
+    color: '#ddd',
+    fontFamily: 'Menlo',
   },
 });
